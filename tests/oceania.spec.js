@@ -6,7 +6,7 @@ test.use({
 });
 
 test('test', async ({ page, context }) => {
-  await page.goto('https://ncl.testing.agent.cenora.io/login');
+  await page.goto('https://oceania.testing.agent.cenora.io/login');
 
   await page.waitForSelector('div.login-box-shadown div.q-img', {
     state: 'visible',
@@ -16,7 +16,7 @@ test('test', async ({ page, context }) => {
     clickCount: 7
   });
 
-  await page.getByRole('textbox', { name: 'Email' }).fill('rabdy+ncl@cenora.com');
+  await page.getByRole('textbox', { name: 'Email' }).fill('rabdy+oceania@cenora.com');
   await page.getByRole('textbox', { name: 'Password' }).fill('Pruebas01*');
   await page.getByRole('button', { name: 'Log In' }).click();
   
@@ -43,7 +43,7 @@ test('test', async ({ page, context }) => {
     state: 'visible',
     timeout: 0,
  })
-//const name = await page.frameLocator('#extension-iframe').getByText('671 Cards').textContent();
+///const name = await page.frameLocator('#extension-iframe').getByText('671 Cards').textContent();
 
 //await page.frameLocator('#extension-iframe').getByPlaceholder('Search').fill(name || '');
 
@@ -60,7 +60,7 @@ test('test', async ({ page, context }) => {
   await page.getByRole('button', { name: 'Invite' }).click();
 
   const page1 = await context.newPage();
-  await page1.goto('https://ncl.testing.consumer.cenora.io/desktop/widget');
+  await page1.goto('https://oceania.testing.consumer.cenora.io/desktop/widget');
   // await page1.frameLocator('iframe').getByText('7640').click();
   await page1.frameLocator('iframe').locator('div.access-code-box span:not(:empty)').waitFor({
     state: 'visible',
@@ -133,17 +133,4 @@ test('test', async ({ page, context }) => {
 
   await page.locator('div').filter({ hasText: 'CANCELEND SESSION' }).getByRole('button', { name: 'END SESSION' }).click();
 
-  await page.getByText('START').isVisible()
-  await page.getByText('list_alt').click();
-  await page.getByText('link').nth(3).click();
-  const page1Promise = page.waitForEvent('popup');
-  await page.getByRole('button', { name: 'Convert to Link' }).click();
-  const page2 = await page1Promise;
-  await page2.getByRole('button', { name: 'Save and CONTINUE' }).click();
-  await page2.getByLabel('Short Description (Required)').click();
-  await page2.getByLabel('Short Description (Required)').fill('TEST AUTO');
-  await page2.getByRole('button', { name: 'Publish AND COPY LINK' }).click();
-
-
-});
-  
+  await page.getByText('START').isVisible()});
