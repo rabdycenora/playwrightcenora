@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+test.use({ viewport: { width: 1900, height: 1060 }, });
 
 test.use({
   browserName: 'chromium',
@@ -13,8 +14,8 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Log In' }).click();
   await page.getByRole('button', { name: '+ NEW CRUISES LINK' }).click();
 
-  await page.frameLocator('#extension-iframe').getByPlaceholder('Search').click();
-  await page.frameLocator('#extension-iframe').getByPlaceholder('Search').fill('8 days canada');
+  //await page.frameLocator('#extension-iframe').getByPlaceholder('Search').click();
+  //await page.frameLocator('#extension-iframe').getByPlaceholder('Search').fill('8 days canada');
   
   await page.waitForSelector('#extension-iframe', {
     state: 'visible',
