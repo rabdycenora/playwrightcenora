@@ -9,14 +9,14 @@ test.use({
 });
 
 test('test', async ({ page, context }) => {
-  //const urlAgent = 'https://ncl.cenora.io/login';
-  //const urlComsumer = 'https://ncl.live/desktop/widget';
+  const urlAgent = 'https://ncl.cenora.io/login';
+  const urlComsumer = 'https://ncl.live/desktop/widget';
  // const urlAgent = 'https://ncl.testing.agent.cenora.io/login';
   //const urlComsumer = 'https://ncl.testing.consumer.cenora.io/desktop/widget';
  //const urlAgent = process.env.URL_NCL_TESTING_AGENT;
   //const urlComsumer = process.env.URL_NCL_TESTING_CONSUMER;
 
-  await page.goto(process.env.URLNCLTESTINGAGENT);
+  await page.goto(urlAgent);
 
   await page.waitForSelector('div.login-box-shadown div.q-img', {
     state: 'visible',
