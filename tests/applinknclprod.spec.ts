@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 test.use({ viewport: { width: 1900, height: 1060 }, });
 
 test('test', async ({ page }) => {
-  await page.goto('https://celebrity.testing.agent.cenora.io/login');
+  await page.goto('https://ncl.cenora.io');
   await page.waitForSelector('div.login-box-shadown div.q-img', {
     state: 'visible',
   })
@@ -11,17 +11,20 @@ test('test', async ({ page }) => {
     clickCount: 7
   });
   await page.getByRole('textbox', { name: 'Email' }).click();
-  await page.getByRole('textbox', { name: 'Email' }).fill('rabdy+celebrity@cenora.com');
+  await page.getByRole('textbox', { name: 'Email' }).fill('rabdy+ncl@cenora.com');
   await page.getByRole('textbox', { name: 'Password' }).click();
   await page.getByRole('textbox', { name: 'Password' }).fill('Pruebas01*');
   await page.getByRole('button', { name: 'Log In' }).click();
-  await page.locator('#notification-dialog').getByText('close').click();
+ // await page.locator('#notification-dialog').getByText('close').click();
   const page1Promise = page.waitForEvent('popup');
   await page.getByRole('button', { name: 'Links' }).click();
   const page1 = await page1Promise;
+  
+  await page1.getByRole('button', { name: '+ NEW CRUISES LINK' }).waitFor({ state: 'visible'});
   await page1.getByRole('button', { name: '+ NEW CRUISES LINK' }).click();
-  await page1.goto('https://celebrity.testing.links-agent.cenora.io/wizard');
+  await page1.goto('https://ncl.links.cenora.io/wizard');
 
+  
   await page1.waitForSelector('#extension-iframe', {
     state: 'visible',
     timeout: 60000

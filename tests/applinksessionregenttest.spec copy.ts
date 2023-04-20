@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-test.use({ viewport: { width: 1900, height: 1060 }, });
+test.use({ viewport: { width: 1880, height: 1020 }, });
 
 test.use({
   browserName: 'chromium',
@@ -7,7 +7,7 @@ test.use({
 });
 
 test('test', async ({ page, context }) => {
-  await page.goto('https://ncl.testing.agent.cenora.io/login');
+  await page.goto('https://regent.testing.agent.cenora.io/login');
 
   await page.waitForSelector('div.login-box-shadown div.q-img', {
     state: 'visible',
@@ -17,7 +17,7 @@ test('test', async ({ page, context }) => {
     clickCount: 7
   });
 
-  await page.getByRole('textbox', { name: 'Email' }).fill('rabdy+ncl@cenora.com');
+  await page.getByRole('textbox', { name: 'Email' }).fill('rabdy+regent@cenora.com');
   await page.getByRole('textbox', { name: 'Password' }).fill('Pruebas01*');
   await page.getByRole('button', { name: 'Log In' }).click();
   
@@ -52,8 +52,6 @@ test('test', async ({ page, context }) => {
 
 //await page.frameLocator('#extension-iframe').getByPlaceholder('Search').clear();
 
-
-
   await extensionIframe.locator('.q-infinite-scroll .shadow-2-card:first-child').waitFor({
     state: 'visible',
     timeout: 0,
@@ -63,7 +61,7 @@ test('test', async ({ page, context }) => {
   await page.getByRole('button', { name: 'Invite' }).click();
 
   const page1 = await context.newPage();
-  await page1.goto('https://ncl.testing.consumer.cenora.io/desktop/widget');
+  await page1.goto('https://regent.testing.consumer.cenora.io/desktop/widget');
   // await page1.frameLocator('iframe').getByText('7640').click();
   await page1.frameLocator('iframe').locator('div.access-code-box span:not(:empty)').waitFor({
     state: 'visible',
@@ -138,16 +136,19 @@ test('test', async ({ page, context }) => {
 
   await page.getByText('START').isVisible()
   await page.getByText('list_alt').click();
-  await page.getByText('link').nth(2).click();
+  await page.getByText('link').nth(1).click();
   const page2Promise = page.waitForEvent('popup');
   await page.getByRole('button', { name: 'Convert to Link' }).click();
   const page2 = await page2Promise;
   await page.waitForTimeout(10000);
+  await page2.getByRole('button', { name: 'Save and CONTINUE' }).waitFor({ state: 'visible'});
   await page2.getByRole('button', { name: 'Save and CONTINUE' }).click();
+  //await page2.getByLabel('Short Description (Required)').last().waitFor({ state: 'attached'});
+  await page2.locator("//textarea[@class='q-field__native q-placeholder']").waitFor({ state: 'visible'});
   await page2.getByLabel('Short Description (Required)').last().click();
-  await page2.getByLabel('Short Description (Required)').last().fill('TEST2 AUTO');
+  await page2.getByLabel('Short Description (Required)').last().fill('test2 auto2');
   await page2.getByRole('button', { name: 'Publish AND COPY LINK' }).click();
 
 
+ 
 });
-  
