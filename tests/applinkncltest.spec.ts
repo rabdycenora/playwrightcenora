@@ -7,7 +7,8 @@ test.use({
 });
 
 test('test', async ({ page }) => {
-  await page.goto('https://ncl.testing.links-agent.cenora.io/');
+  await page.goto('h
+  ');
   await page.goto('https://ncl.testing.links-agent.cenora.io/login');
   await page.getByRole('textbox', { name: 'Email' }).fill('rabdy+ncl@cenora.com');
   await page.getByRole('textbox', { name: 'Password' }).fill('Pruebas01*');

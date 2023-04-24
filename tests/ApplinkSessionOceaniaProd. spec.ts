@@ -124,8 +124,7 @@ test('test', async ({ page, context }) => {
   const page2Promise = page.waitForEvent('popup');
   await page.getByRole('button', { name: 'Convert to Link' }).click();
   const page2 = await page2Promise;
-  await page.waitForTimeout(10000);
-  await page2.getByRole('button', { name: 'Save and CONTINUE' }).waitFor({ state: 'visible'});
+ // await page2.getByRole('button', { name: 'Save and CONTINUE' }).waitFor({ state: 'visible'});
   await page2.getByRole('button', { name: 'Save and CONTINUE' }).click();
   //await page2.getByLabel('Short Description (Required)').last().waitFor({ state: 'attached'});
   await page2.locator("//textarea[@class='q-field__native q-placeholder']").waitFor({ state: 'visible'});
