@@ -1,8 +1,12 @@
 import { test, expect } from '@playwright/test';
 test.use({ viewport: { width: 1900, height: 1060 }, });
+test.use({
+  browserName: 'chromium',
+  headless: true,
+});
 
 test('test', async ({ page }) => {
-  await page.goto('https://ncl.staging.agent.cenora.io/login');
+  await page.goto('https://regent.staging.agent.cenora.io/login');
   await page.waitForSelector('div.login-box-shadown div.q-img', {
     state: 'visible',
   })
@@ -11,7 +15,7 @@ test('test', async ({ page }) => {
     clickCount: 7
   });
   await page.getByRole('textbox', { name: 'Email' }).click();
-  await page.getByRole('textbox', { name: 'Email' }).fill('rabdy+ncl@cenora.com');
+  await page.getByRole('textbox', { name: 'Email' }).fill('rabdy+regent@cenora.com');
   await page.getByRole('textbox', { name: 'Password' }).click();
   await page.getByRole('textbox', { name: 'Password' }).fill('Pruebas01*');
   await page.getByRole('button', { name: 'Log In' }).click();
