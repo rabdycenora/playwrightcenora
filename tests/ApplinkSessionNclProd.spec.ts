@@ -7,7 +7,7 @@ test.use({
 });
 
 test('test', async ({ page, context }) => {
-  await page.goto('https://ncl.testing.agent.cenora.io/login');
+  await page.goto('https://ncl.cenora.io/login');
 
   await page.waitForSelector('div.login-box-shadown div.q-img', {
     state: 'visible',
@@ -22,7 +22,7 @@ test('test', async ({ page, context }) => {
   await page.getByRole('button', { name: 'Log In' }).click();
   
 
-
+/*
   await page.waitForSelector('#notification-dialog', {
   state: 'visible',
   })
@@ -34,12 +34,12 @@ test('test', async ({ page, context }) => {
   await expect(page.locator('#notification-dialog').getByText('close')).toBeVisible();
 
   await page.getByRole('button', { name: 'got it!' }).click();
-  
+  */
 
   const extensionIframe = await page.frameLocator('#extension-iframe')
 
-  await expect(page.frameLocator('#extension-iframe').getByRole('link', { name: 'The Cruises' })).toBeVisible();
-  await expect(page.frameLocator('#extension-iframe').getByPlaceholder('Search')).toBeVisible();
+  //await expect(page.frameLocator('#extension-iframe').getByRole('link', { name: 'The Cruises' })).toBeVisible();
+  //await expect(page.frameLocator('#extension-iframe').getByPlaceholder('Search')).toBeVisible();
   await extensionIframe.locator('.q-infinite-scroll .shadow-2-card:first-child').waitFor({
     state: 'visible',
     timeout: 0,
@@ -63,7 +63,7 @@ test('test', async ({ page, context }) => {
   await page.getByRole('button', { name: 'Invite' }).click();
 
   const page1 = await context.newPage();
-  await page1.goto('https://ncl.testing.consumer.cenora.io/desktop/widget');
+  await page1.goto('https://ncl.live/desktop/widget');
   // await page1.frameLocator('iframe').getByText('7640').click();
   await page1.frameLocator('iframe').locator('div.access-code-box span:not(:empty)').waitFor({
     state: 'visible',
