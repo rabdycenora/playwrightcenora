@@ -5,7 +5,7 @@ dotenv.config()
 
 test.use({
   browserName: 'chromium',
-  headless: false,
+  headless: true,
 });
 
 test('test', async ({ page, context }) => {
