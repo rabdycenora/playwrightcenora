@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 test.use({ viewport: { width: 1900, height: 1060 }, });
 test.use({
   browserName: 'chromium',
-  headless: true,
+  headless: false,
 });
 
 test('test', async ({ page }) => {
@@ -25,7 +25,7 @@ test('test', async ({ page }) => {
   const page1 = await page1Promise;
   await page1.getByRole('tab', { name: 'Agents' }).getByText('Agents').click();
   await page1.getByPlaceholder('Search by Name...').click();
-  await page1.getByText('search', { exact: true }).fill('Rabdy Gutierrez');
+  await page1.getByPlaceholder('Search by Name...').fill('Rabdy Gutierrez');
   await page1.waitForTimeout(5000);
   await page1.getByText('Rabdy Gutierrez').nth(1).click();
   await page1.waitForTimeout(5000);
