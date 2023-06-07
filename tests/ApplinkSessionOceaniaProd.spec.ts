@@ -20,6 +20,11 @@ test('test', async ({ page, context }) => {
   await page.getByRole('textbox', { name: 'Email' }).fill('rabdy+oceania@cenora.com');
   await page.getByRole('textbox', { name: 'Password' }).fill('Pruebas01*');
   await page.getByRole('button', { name: 'Log In' }).click();
+  await page.waitForSelector('#notification-dialog', {
+    state: 'visible',
+    })
+  
+  await page.getByRole('button', { name: 'got it!' }).click();
     
 
   const extensionIframe = await page.frameLocator('#extension-iframe')
