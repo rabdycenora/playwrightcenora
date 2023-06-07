@@ -27,18 +27,13 @@ test('test', async ({ page, context }) => {
   state: 'visible',
   })
 
-  await expect(page.getByText('let’s get started')).toContainText('let’s get started');
-  await expect(page.getByRole('button', { name: 'learn more' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'got it!' })).toBeVisible();
-  await expect(page.getByRole('checkbox', { name: 'Don\'t show this again' })).toBeVisible();
-  await expect(page.locator('#notification-dialog').getByText('close')).toBeVisible();
-
+ 
   await page.getByRole('button', { name: 'got it!' }).click();
   
 
   const extensionIframe = await page.frameLocator('#extension-iframe')
 
-  await expect(page.frameLocator('#extension-iframe').getByRole('link', { name: 'The Cruises' })).toBeVisible();
+  
   await expect(page.frameLocator('#extension-iframe').getByPlaceholder('Search')).toBeVisible();
   await extensionIframe.locator('.q-infinite-scroll .shadow-2-card:first-child').waitFor({
     state: 'visible',

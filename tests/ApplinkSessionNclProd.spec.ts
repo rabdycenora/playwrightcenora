@@ -22,19 +22,15 @@ test('test', async ({ page, context }) => {
   await page.getByRole('button', { name: 'Log In' }).click();
   
 
-/*
+
   await page.waitForSelector('#notification-dialog', {
   state: 'visible',
   })
 
-  await expect(page.getByText('let’s get started')).toContainText('let’s get started');
-  await expect(page.getByRole('button', { name: 'learn more' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'got it!' })).toBeVisible();
-  await expect(page.getByRole('checkbox', { name: 'Don\'t show this again' })).toBeVisible();
-  await expect(page.locator('#notification-dialog').getByText('close')).toBeVisible();
+
 
   await page.getByRole('button', { name: 'got it!' }).click();
-  */
+  
 
   const extensionIframe = await page.frameLocator('#extension-iframe')
 

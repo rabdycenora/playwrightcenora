@@ -2,11 +2,11 @@ import { test, expect } from '@playwright/test';
 test.use({ viewport: { width: 1900, height: 1060 }, });
 test.use({
   browserName: 'chromium',
-  headless: false,
+  headless: true,
 });
 
 test('test', async ({ page }) => {
-  await page.goto('https://celebrity.staging.agent.cenora.io/login');
+  await page.goto('https://celebrity.testing.agent.cenora.io/login');
   await page.waitForSelector('div.login-box-shadown div.q-img', {
     state: 'visible',
   })

@@ -6,7 +6,7 @@ test.use({
 });
 
 test('test', async ({ page }) => {
-  await page.goto('https://oceania.staging.agent.cenora.io/login');
+  await page.goto('https://ncl.testing.agent.cenora.io/login');
   await page.waitForSelector('div.login-box-shadown div.q-img', {
     state: 'visible',
   })
@@ -15,7 +15,7 @@ test('test', async ({ page }) => {
     clickCount: 7
   });
   await page.getByRole('textbox', { name: 'Email' }).click();
-  await page.getByRole('textbox', { name: 'Email' }).fill('rabdy+oceania@cenora.com');
+  await page.getByRole('textbox', { name: 'Email' }).fill('rabdy+ncl@cenora.com');
   await page.getByRole('textbox', { name: 'Password' }).click();
   await page.getByRole('textbox', { name: 'Password' }).fill('Pruebas01*');
   await page.getByRole('button', { name: 'Log In' }).click();

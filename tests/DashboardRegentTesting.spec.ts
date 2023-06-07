@@ -6,7 +6,7 @@ test.use({
 });
 
 test('test', async ({ page }) => {
-  await page.goto('https://regent.staging.agent.cenora.io/login');
+  await page.goto('https://regent.testing.agent.cenora.io/login');
   await page.waitForSelector('div.login-box-shadown div.q-img', {
     state: 'visible',
   })
