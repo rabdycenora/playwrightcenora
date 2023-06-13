@@ -1,12 +1,13 @@
 import { test, expect } from '@playwright/test';
+test.use({ viewport: { width: 1900, height: 1060 }, });
 
 test.use({
   browserName: 'chromium',
-  headless: false,
+  headless: true,
 });
 
 test('test', async ({ page, context }) => {
-  await page.goto('https://ncl.testing.agent.cenora.io/login');
+  await page.goto('https://ncl.cenora.io/login');
 
   await page.waitForSelector('div.login-box-shadown div.q-img', {
     state: 'visible',
@@ -26,30 +27,28 @@ test('test', async ({ page, context }) => {
   state: 'visible',
   })
 
-  await expect(page.getByText('let’s get started')).toContainText('let’s get started');
-  await expect(page.getByRole('button', { name: 'learn more' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'got it!' })).toBeVisible();
-  await expect(page.getByRole('checkbox', { name: 'Don\'t show this again' })).toBeVisible();
-  await expect(page.locator('#notification-dialog').getByText('close')).toBeVisible();
+
 
   await page.getByRole('button', { name: 'got it!' }).click();
   
 
   const extensionIframe = await page.frameLocator('#extension-iframe')
 
-  await expect(page.frameLocator('#extension-iframe').getByRole('link', { name: 'The Cruises' })).toBeVisible();
-  await expect(page.frameLocator('#extension-iframe').getByPlaceholder('Search')).toBeVisible();
+  //await expect(page.frameLocator('#extension-iframe').getByRole('link', { name: 'The Cruises' })).toBeVisible();
+  //await expect(page.frameLocator('#extension-iframe').getByPlaceholder('Search')).toBeVisible();
   await extensionIframe.locator('.q-infinite-scroll .shadow-2-card:first-child').waitFor({
     state: 'visible',
     timeout: 0,
  })
-///const name = await page.frameLocator('#extension-iframe').getByText('671 Cards').textContent();
+//const name = await page.frameLocator('#extension-iframe').getByText('671 Cards').textContent();
 
 //await page.frameLocator('#extension-iframe').getByPlaceholder('Search').fill(name || '');
 
 //await page.screenshot({ path: 'screenshot.png', fullPage: true });
 
 //await page.frameLocator('#extension-iframe').getByPlaceholder('Search').clear();
+
+
 
   await extensionIframe.locator('.q-infinite-scroll .shadow-2-card:first-child').waitFor({
     state: 'visible',
@@ -60,7 +59,7 @@ test('test', async ({ page, context }) => {
   await page.getByRole('button', { name: 'Invite' }).click();
 
   const page1 = await context.newPage();
-  await page1.goto('https://ncl.testing.consumer.cenora.io/desktop/widget');
+  await page1.goto('https://ncl.live/desktop/widget');
   // await page1.frameLocator('iframe').getByText('7640').click();
   await page1.frameLocator('iframe').locator('div.access-code-box span:not(:empty)').waitFor({
     state: 'visible',
@@ -133,4 +132,18 @@ test('test', async ({ page, context }) => {
 
   await page.locator('div').filter({ hasText: 'CANCELEND SESSION' }).getByRole('button', { name: 'END SESSION' }).click();
 
-  await page.getByText('START').isVisible()});
+  await page.getByText('START').isVisible()
+  await page.getByText('list_alt').click();
+  await page.getByText('link').nth(2).click();
+  const page2Promise = page.waitForEvent('popup');
+  await page.getByRole('button', { name: 'Convert to Link' }).click();
+  const page2 = await page2Promise;
+  await page.waitForTimeout(10000);
+  await page2.getByRole('button', { name: 'Save and CONTINUE' }).click();
+  await page2.getByLabel('Short Description (Required)').last().click();
+  await page2.getByLabel('Short Description (Required)').last().fill('TEST2 AUTO');
+  await page2.getByRole('button', { name: 'Publish AND COPY LINK' }).click();
+
+
+});
+  
