@@ -5,6 +5,7 @@ test.use({
   headless: true,
 });
 
+
 test('test', async ({ page }) => {
   await page.goto('https://celebrity.testing.agent.cenora.io/login');
   await page.waitForSelector('div.login-box-shadown div.q-img', {
