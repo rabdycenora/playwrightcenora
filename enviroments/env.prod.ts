@@ -14,4 +14,19 @@ export const PROD = {
         "username": "rabdy+oceania@cenora.com",
         "password": "Pruebas01*",
     },
+    "REGENT": {
+        "urlAgent": "https://regent.cenora.io/login",
+        "urlComsumer": 'https://rssc.live/desktop/widget',
+        "appLink": "https://regent.links.cenora.io/wizard",
+        "username": "rabdy+regent@cenora.com",
+        "password": "Pruebas01*",
+    },
+    "CELEBRITY": {
+        "urlAgent": "http://Celebrity-maintenance.cenora.io",
+        "urlComsumer": 'https://celebrity.live/desktop/widget',
+        "appLink": "https://celebrity.links.cenora.io/wizard",
+        "username": "rabdy+celebrity@cenora.com",
+        "password": "Pruebas01*",
+    },
+    
 }

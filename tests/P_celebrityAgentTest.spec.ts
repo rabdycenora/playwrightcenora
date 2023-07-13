@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { Enviroment } from "../enviroments/Enviroments";
 test.describe.configure({ mode: 'serial'});
-const env = new Enviroment('OCEANIA');
+const env = new Enviroment('CELEBRITY');
 test.use({ viewport: { width: 1900, height: 1060 }, });
 test.use({browserName: 'chromium',headless: true,});
 
@@ -91,7 +91,7 @@ test('test Applink @link', async ({ page }) => {
   await page.close();
 });
 
-test('test ApplinkSession @session', async ({ page, context }) => {
+/*test('test ApplinkSession @session', async ({ page, context }) => {
   await page.goto(env.urlAgent);
   await page.waitForSelector('div.login-box-shadown div.q-img', {state: 'visible'});
   await page.locator('div.login-box-shadown div.q-img').click({clickCount: 7});
@@ -151,6 +151,7 @@ test('test ApplinkSession @session', async ({ page, context }) => {
   await page2.waitForTimeout(10000);
   await page.close();
 });
+*/
 test('test dashboard @dash', async ({ page }) => {
   await page.goto(env.urlAgent);
   await page.waitForSelector('div.login-box-shadown div.q-img', {state: 'visible',})

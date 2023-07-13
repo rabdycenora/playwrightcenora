@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { Enviroment } from "../enviroments/Enviroments";
 test.describe.configure({ mode: 'serial'});
-const env = new Enviroment('OCEANIA');
+const env = new Enviroment('REGENT');
 test.use({ viewport: { width: 1900, height: 1060 }, });
 test.use({browserName: 'chromium',headless: true,});
 
@@ -148,7 +148,7 @@ test('test ApplinkSession @session', async ({ page, context }) => {
   await page2.getByLabel('Short Description (Required)').last().click();
   await page2.getByLabel('Short Description (Required)').last().fill('test2 auto2');
   await page2.getByRole('button', { name: 'Publish AND COPY LINK' }).click();
-  await page2.waitForTimeout(10000);
+  await page2.waitForTimeout(5000);
   await page.close();
 });
 test('test dashboard @dash', async ({ page }) => {

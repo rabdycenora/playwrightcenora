@@ -14,4 +14,18 @@ export const STAGING = {
         "username": "rabdy+oceania@cenora.com",
         "password": "Pruebas01*",
     },
+    "REGENT": {
+        "urlAgent": "https://regent.staging.agent.cenora.io/login",
+        "urlComsumer": 'https://regent.staging.consumer.cenora.io/desktop/widget',
+        "appLink": "https://regent.staging.links-agent.cenora.io/login",
+        "username": "rabdy+regent@cenora.com",
+        "password": "Pruebas01*",
+    },
+    "CELEBRITY": {
+        "urlAgent": "https://celebrity.staging.agent.cenora.io/login",
+        "urlComsumer": 'https://celebrity.staging.consumer.cenora.io/desktop/widget',
+        "appLink": "https://celebrity.staging.links-agent.cenora.io/login",
+        "username": "rabdy+celebrity@cenora.com",
+        "password": "Pruebas01*",
+    },
 }
