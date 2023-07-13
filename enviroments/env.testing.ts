@@ -14,5 +14,19 @@ export const TESTING = {
         "username": "rabdy+oceania@cenora.com",
         "password": "Pruebas01*",
     },
+    "REGENT": {
+        "urlAgent": "https://regent.testing.agent.cenora.io/login",
+        "urlComsumer": 'https://regent.testing.consumer.cenora.io/desktop/widget',
+        "appLink": "https://regent.testing.links-agent.cenora.io/login",
+        "username": "rabdy+regent@cenora.com",
+        "password": "Pruebas01*",
+    },
+    "CELEBRITY": {
+        "urlAgent": "https://celebrity.testing.agent.cenora.io/login",
+        "urlComsumer": 'https://celebrity.testing.consumer.cenora.io/desktop/widget',
+        "appLink": "https://celebrity.testing.links-agent.cenora.io/login",
+        "username": "rabdy+celebrity@cenora.com",
+        "password": "Pruebas01*",
+    },
 }
 
